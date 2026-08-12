@@ -6,12 +6,7 @@
     <title>A Special Gift For You 🤍</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body {
             background: linear-gradient(135deg, #120c1f, #2a1b4e);
             color: #fff;
@@ -22,110 +17,44 @@
             overflow: hidden;
             position: relative;
         }
-        /* Efek Bintang / Background Elegan */
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-            background-size: 30px 30px;
-            z-index: 0;
-        }
+        .stars { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 30px 30px; z-index: 0; }
         .card-container {
-            position: relative;
-            z-index: 1;
-            width: 90%;
-            max-width: 380px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            text-align: center;
-            display: none;
+            position: relative; z-index: 1; width: 90%; max-width: 380px;
+            background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px;
+            padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            text-align: center; display: none;
         }
-        .card-container.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        h2 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-            color: #ffd1dc;
-        }
-        p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #f1f1f1;
-            margin-bottom: 20px;
-        }
+        .card-container.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        h2 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 600; color: #ffd1dc; }
+        p { font-size: 0.95rem; line-height: 1.6; color: #f1f1f1; margin-bottom: 20px; }
         .btn {
-            background: #e06d88;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(224, 109, 136, 0.4);
+            background: #e06d88; color: white; border: none; padding: 10px 20px;
+            border-radius: 25px; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 4px 15px rgba(224, 109, 136, 0.4);
         }
-        .btn:hover {
-            background: #ff7d9b;
-            transform: translateY(-2px);
-        }
-        /* Grid Game Kartu */
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+        .btn:hover { background: #ff7d9b; transform: translateY(-2px); }
+        .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
         .memory-card {
-            background: rgba(255, 255, 255, 0.15);
-            aspect-ratio: 1;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.15); aspect-ratio: 1; border-radius: 10px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.3rem; cursor: pointer; transition: 0.3s;
         }
-        .memory-card.flipped {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        /* Kue Ulang Tahun */
-        .cake-box {
-            font-size: 4rem;
-            margin: 15px 0;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+        .memory-card.flipped { background: rgba(255, 255, 255, 0.3); }
+        .cake-box { font-size: 4rem; margin: 15px 0; cursor: pointer; transition: 0.3s; }
     </style>
 </head>
 <body>
-
     <div class="stars"></div>
 
-    <!-- SLIDE 1: Mini Game Balik Kartu -->
     <div id="slide-1" class="card-container active">
         <h2>A Little Game for You 🎁</h2>
         <p>Balik 2 kartu yang sama yuk!</p>
-        <div class="memory-grid" id="game-grid">
-            <!-- Kartu otomatis dibuat via Javascript -->
-        </div>
+        <div class="memory-grid" id="game-grid"></div>
         <button class="btn" id="next-from-game" style="display:none;" onclick="nextSlide(2)">Lanjut 🤍</button>
     </div>
 
-    <!-- SLIDE 2: Make a Wish / Tiup Lilin -->
     <div id="slide-2" class="card-container">
         <h2>Make a Wish 🎂</h2>
         <div class="cake-box" id="cake" onclick="tiupLilin()">🎂</div>
@@ -133,28 +62,24 @@
         <button class="btn" id="next-from-cake" style="display:none;" onclick="nextSlide(3)">Lanjut 🤍</button>
     </div>
 
-    <!-- SLIDE 3: Pesan Romantis 1 -->
     <div id="slide-3" class="card-container">
         <h2>Happy Level Up Day! 🤍</h2>
         <p>Tepat hari ini, dunia kedatangan seseorang yang paling aku sayang. Makasih ya udah lahir ke dunia dan akhirnya bisa ketemu sama aku.</p>
         <button class="btn" onclick="nextSlide(4)">Lanjut 🤍</button>
     </div>
 
-    <!-- SLIDE 4: Pesan Romantis 2 -->
     <div id="slide-4" class="card-container">
         <h2>Doa & Harapan ✨</h2>
         <p>Semoga di usia yang baru ini, kamu selalu diberi kesehatan, hati yang tenang, dan langkah yang dimudahkan buat mencapai semua mimpi-mimpi hebatmu.</p>
         <button class="btn" onclick="nextSlide(5)">Lanjut 🤍</button>
     </div>
 
-    <!-- SLIDE 5: Pesan Romantis 3 -->
     <div id="slide-5" class="card-container">
         <h2>I'm Always Here 🌻</h2>
         <p>Apapun yang terjadi, pelan-pelan kejar semua keinginan kamu. Jangan pernah takut gagal, karena aku selalu dukung kamu di sini.</p>
         <button class="btn" onclick="nextSlide(6)">Lanjut 🤍</button>
     </div>
 
-    <!-- SLIDE 6: Penutup -->
     <div id="slide-6" class="card-container">
         <h2>Have a Fabulous Day! 🌟</h2>
         <p>Terakhir, jangan lupa buat selalu bersyukur ya. <i>Stay kind, stay you, and stay mine.</i> Aku sayang banget sama kamu! 🤍</p>
@@ -162,53 +87,34 @@
     </div>
 
     <script>
-        // Fungsi Berpindah Slide
-        function nextSlide(slideNum) {
+        function nextSlide(n) {
             document.querySelectorAll('.card-container').forEach(el => el.classList.remove('active'));
-            document.getElementById('slide-' + slideNum).classList.add('active');
+            document.getElementById('slide-' + n).classList.add('active');
         }
-
-        // Logika Mini Game Mencocokkan Kartu Sederhana
         const icons = ['🤍', '🌻', '✨', '🤍', '🌻', '✨', '🌸', '🌸'];
-        let shuffledIcons = icons.sort(() => 0.5 - Math.random());
+        let shuffled = icons.sort(() => 0.5 - Math.random());
         let grid = document.getElementById('game-grid');
-        let flippedCards = [];
-        let matchedPairs = 0;
-
-        shuffledIcons.forEach((icon, index) => {
+        let flipped = [], matched = 0;
+        shuffled.forEach(icon => {
             let card = document.createElement('div');
-            card.classList.add('memory-card');
-            card.dataset.icon = icon;
-            card.addEventListener('click', () => flipCard(card));
+            card.className = 'memory-card'; card.dataset.icon = icon;
+            card.onclick = function() {
+                if (card.className.includes('flipped') || flipped.length >= 2) return;
+                card.textContent = card.dataset.icon; card.className += ' flipped'; flipped.push(card);
+                if (flipped.length === 2) {
+                    if (flipped[0].dataset.icon === flipped[1].dataset.icon) {
+                        matched++; flipped = [];
+                        if (matched === 4) document.getElementById('next-from-game').style.display = 'inline-block';
+                    } else {
+                        setTimeout(() => {
+                            flipped.forEach(c => { c.textContent = ''; c.className = 'memory-card'; });
+                            flipped = [];
+                        }, 800);
+                    }
+                }
+            };
             grid.appendChild(card);
         });
-
-        function flipCard(card) {
-            if (card.classList.contains('flipped') || flippedCards.length >= 2) return;
-            card.textContent = card.dataset.icon;
-            card.classList.add('flipped');
-            flippedCards.push(card);
-
-            if (flippedCards.length === 2) {
-                if (flippedCards[0].dataset.icon === flippedCards[1].dataset.icon) {
-                    matchedPairs++;
-                    flippedCards = [];
-                    if (matchedPairs === 4) {
-                        document.getElementById('next-from-game').style.display = 'inline-block';
-                    }
-                } else {
-                    setTimeout(() => {
-                        flippedCards[0].textContent = '';
-                        flippedCards[0].classList.remove('flipped');
-                        flippedCards[1].textContent = '';
-                        flippedCards[1].classList.remove('flipped');
-                        flippedCards = [];
-                    }, 800);
-                }
-            }
-        }
-
-        // Logika Tiup Lilin
         let isBlown = false;
         function tiupLilin() {
             if (!isBlown) {
